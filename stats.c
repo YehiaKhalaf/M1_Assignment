@@ -26,6 +26,7 @@
 
 
 #include <stdio.h>
+#include <math.h>
 #include "stats.h"
 
 /* Size of the Data Set */
@@ -46,56 +47,126 @@ void main() {
 
 /* Add other Implementation File Code Here */
 unsigned char find_maximum(unsigned char *A, unsigned int N) {
-	/*take 1st element as max
-	  increment pointer
-	  count from 2nd element to Nth element and search for the max.
-	  return max value*/
+/*take 1st element as max
+  increment pointer
+  count from 2nd element to Nth element and search for the max.
+  return max value*/
+	unsigned char max=*A;
+	A++;
+	for (int i=2; i<=N; i++) {
+		if ( *A >= max )
+			max = *A;
+		A++;
+	}
+	return max;
 }
 
 unsigned char find_minimum(unsigned char *A, unsigned int N) {
-	/*take 1st element as min
-	  increment pointer
-	  count from 2nd element to Nth element and search for the min.
-	  return min value*/
+/*take 1st element as min
+  increment pointer
+  count from 2nd element to Nth element and search for the min.
+  return min value*/
+	unsigned char min=*A;
+	A++;
+	for (int i=2; i<=N; i++) {
+		if ( *A <= min )
+			min = *A;
+		A++;
+	}
+	return min;
 }
 
 
 unsigned char find_mean(unsigned char *A, unsigned int N) {
-	/*take 1st element as sum
-	  increment pointer
-	  count from 2nd element to Nth element and add each  element to sum.
-	  devide by N to get mean --> and round to neasrt integer.
-	  return mean*/
+/*take 1st element as sum
+  increment pointer
+  count from 2nd element to Nth element and add each  element to sum.
+  devide by N to get mean --> and round to neasrt integer.
+  return mean*/
+
+	unsigned long int sum = *A;
+	A++;
+	for (int i=2; i<=N; i++) {
+		sum += *A;
+		A++;
+	}
+	unsigned char mean = round(((float)sum)/N);
+	return mean;
 }
 
+unsigned char * max_addr(unsigned char *A, unsigned int N) {
+/* get address of maximum element in an array  to be used in sorting function*/
+
+}
+
+void swap ( unsigned char *A, unsigned char *B ) {
+/*swap two elements in memory stack to be used in sort function
+  take 1st element in a temporary location.
+  copy 2nd element to 1st element
+  copy the temporary location to 2nd element */
+
+}
 
 void sort_array(unsigned char *A, unsigned int N) {
-	/*find the max element within search area M (initially M=N).
-	  swap max element with element pointed out by pointer (initially pointer --> 1st element)
-	  increment the pointer
-	  decrement array search area M
-	  repeat till Nth element */
+/*find the max element within search area M (initially M=N).
+  swap max element with element pointed out by pointer (initially pointer --> 1st element)
+  increment the pointer
+  decrement array search area M
+  repeat till Nth element */
+	unsigned char *Max;
+	unsigned char *B;
+	B = A;
+	unsigned int M = N;
+	for (int i=1; i<N; i++) {
+		Max= max_addr( B, M); 
+		swap ( Max, B);
+		B++;
+		M--;
+	}
 }
 
 
 unsigned char find_median(unsigned char *A, unsigned int N) {
-	/*sort the array using sort_array().
-	  if N is odd --> take the middle element as the median
-	  if N is even --> take the average of the 2 middle elements as the median, rounded
-	  to nearst integer.
-	  return median.
+/*sort the array using sort_array().
+  if N is odd --> take the middle element as the median
+  if N is even --> take the average of the 2 middle elements as the median, rounded
+  to nearst integer.
+  return median.
+	sort_array(A, N);
+	unsigned char med;
+	if ( (N%2)==0 ) {
+		A += ((N/2)-1);
+		med = round((*A + *(A+1))/((float)2));
+	}
+	else {
+		A += ((N-1)/2);
+		med = *A;
+	}
+	return med;
 }
 
 
 void print_array(unsigned char *A, unsigned int N) {
-	/*count from element index 0 till index N-1:
-	  print (Element [i] = value pointed out by pointer)
-	  increment pointer */
+/*count from element index 0 till index N-1:
+  print (Element [i] = value pointed out by pointer)
+  increment pointer */
+	printf ( "\n\nArray Data: \n------------\n");
+	for ( int i=0; i<=N-1; i++) {
+		printf ( " Element [%d] = %d \n", i, *A);
+		A++;
+	}
 }
 
 
 void print_statistics(unsigned char *A, unsigned int N) {
-	/* calculate statistics by using the defined functions above.
-	   print results.
-
+/* calculate statistics by using the defined functions above.
+   print results.
+	unsigned char MAX = find_maximum(A, N);
+	unsigned char MIN = find_minimum(A, N);
+	unsigned char MEAN = find_mean(A, N);
+	unsigned char MEDIAN = find_median(A, N);
+	printf( "Maximum = %d \n", MAX);
+	printf( "Minimum = %d \n", MIN);
+	printf( "Mean    = %d \n", MEAN);
+	printf( "Median  = %d \n", MEDIAN);
 }

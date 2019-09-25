@@ -93,4 +93,22 @@ unsigned char find_median(unsigned char *A, unsigned int N);
 
 void print_statistics(unsigned char *A, unsigned int N);
 
+/*************************************************************************
+ * swap(): Given pointers for two elements in the memory stack, it swaps *
+ *	   swaps them.							 *
+ * parameters: *A, *B Pointers to memory stack locations		 *			 *
+ *************************************************************************/
+
+void swap ( unsigned char *A, unsigned char *B );
+
+/*************************************************************************
+ * max_addr(): Given an array of data and its length length, it finds    *
+ * the address pointer for maximum value among its elements.		 *
+ * parameters: *A Pointer to Array of chars				 *
+ * 		N Number of elements in the Array			 *
+ * Return    : 	the address pointer to maximum value.			 *
+ *************************************************************************/
+
+unsigned char * max_addr(unsigned char *A, unsigned int N);
+
 #endif /* __STATS_H__ */
