@@ -45,3 +45,57 @@ void main() {
 }
 
 /* Add other Implementation File Code Here */
+unsigned char find_maximum(unsigned char *A, unsigned int N) {
+	/*take 1st element as max
+	  increment pointer
+	  count from 2nd element to Nth element and search for the max.
+	  return max value*/
+}
+
+unsigned char find_minimum(unsigned char *A, unsigned int N) {
+	/*take 1st element as min
+	  increment pointer
+	  count from 2nd element to Nth element and search for the min.
+	  return min value*/
+}
+
+
+unsigned char find_mean(unsigned char *A, unsigned int N) {
+	/*take 1st element as sum
+	  increment pointer
+	  count from 2nd element to Nth element and add each  element to sum.
+	  devide by N to get mean --> and round to neasrt integer.
+	  return mean*/
+}
+
+
+void sort_array(unsigned char *A, unsigned int N) {
+	/*find the max element within search area M (initially M=N).
+	  swap max element with element pointed out by pointer (initially pointer --> 1st element)
+	  increment the pointer
+	  decrement array search area M
+	  repeat till Nth element */
+}
+
+
+unsigned char find_median(unsigned char *A, unsigned int N) {
+	/*sort the array using sort_array().
+	  if N is odd --> take the middle element as the median
+	  if N is even --> take the average of the 2 middle elements as the median, rounded
+	  to nearst integer.
+	  return median.
+}
+
+
+void print_array(unsigned char *A, unsigned int N) {
+	/*count from element index 0 till index N-1:
+	  print (Element [i] = value pointed out by pointer)
+	  increment pointer */
+}
+
+
+void print_statistics(unsigned char *A, unsigned int N) {
+	/* calculate statistics by using the defined functions above.
+	   print results.
+
+}

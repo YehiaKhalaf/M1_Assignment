@@ -26,20 +26,71 @@
 #ifndef __STATS_H__
 #define __STATS_H__
 
-/* Add Your Declarations and Function Comments here */ 
+/*************************************************************************
+ * print_array(): Given an array of data and its length length, it prints*
+ * the array to the screen.						 *
+ * parameters: *A Pointer to Array of chars				 *
+ * 		N Number of elements in the Array			 *
+ *************************************************************************/
 
-/**
- * @brief <Add Brief Description of Function Here>
- *
- * <Add Extended Description Here>
- *
- * @param <Add InputName> <add description here>
- * @param <Add InputName> <add description here>
- * @param <Add InputName> <add description here>
- * @param <Add InputName> <add description here>
- *
- * @return <Add Return Informaiton here>
- */
+void print_array(unsigned char *A, unsigned int N);
 
+/*************************************************************************
+ * sort_array(): Given an array of data and its length length, it sorts  *
+ * the array elements in a descending order  				 *
+ * parameters: *A Pointer to Array of chars				 *
+ * 		N Number of elements in the Array			 *
+ *************************************************************************/
+
+void sort_array(unsigned char *A, unsigned int N);
+
+/*************************************************************************
+ * find_maximum(): Given an array of data and its length length, it finds*
+ * the maximum value among its elements.				 *
+ * parameters: *A Pointer to Array of chars				 *
+ * 		N Number of elements in the Array			 *
+ * Return    : 	the maximum value.					 *
+ *************************************************************************/
+
+unsigned char find_maximum(unsigned char *A, unsigned int N);
+
+/*************************************************************************
+ * find_minimum(): Given an array of data and its length length, it finds*
+ * the minimum value among its elements.				 *
+ * parameters: *A Pointer to Array of chars				 *
+ * 		N Number of elements in the Array			 *
+ * Return    : 	the minimum value.					 *
+ *************************************************************************/
+
+unsigned char find_minimum(unsigned char *A, unsigned int N);
+
+/***************************************************************************
+ * find_mean(): Given an array of data and its length length, it calculates*
+ * the mean value of all its elements.					   *
+ * parameters: *A Pointer to Array of chars				   *
+ * 		N Number of elements in the Array			   *
+ * Return    : 	the mean value, rounded to the nearst integer.		   *
+ ***************************************************************************/
+
+unsigned char find_mean(unsigned char *A, unsigned int N);
+
+/*************************************************************************
+ * find_median(): Given an array of data and its length length, it finds *
+ * the median value of all its elements.				 *
+ * parameters: *A Pointer to Array of chars				 *
+ * 		N Number of elements in the Array			 *
+ * Return    : 	the median value, rounded to the nearst integer.	 *
+ *************************************************************************/
+
+unsigned char find_median(unsigned char *A, unsigned int N);
+
+/*************************************************************************
+ * print_statistics(): Given an array of data and its length length, it  *
+ * prints out the results (Max, Min, Mean, Median) to the screen.	 *
+ * parameters: *A Pointer to Array of chars				 *
+ * 		N Number of elements in the Array			 *
+ *************************************************************************/
+
+void print_statistics(unsigned char *A, unsigned int N);
 
 #endif /* __STATS_H__ */
