@@ -40,12 +40,11 @@ void main() {
                               201,   6,  12,  60,   8,   2,   5,  67,
                                 7,  87, 250, 230,  99,   3, 100,  90};
 
-  /* Other Variable Declarations Go Here */
-  /* Statistics and Printing Functions Go Here */
+  print_array(test,SIZE);
+  print_statistics(test, SIZE);
 
 }
 
-/* Add other Implementation File Code Here */
 unsigned char find_maximum(unsigned char *A, unsigned int N) {
 /*take 1st element as max
   increment pointer
@@ -96,7 +95,17 @@ unsigned char find_mean(unsigned char *A, unsigned int N) {
 
 unsigned char * max_addr(unsigned char *A, unsigned int N) {
 /* get address of maximum element in an array  to be used in sorting function*/
-
+	unsigned char *M_addr=A;
+	unsigned char max= *A;
+	A++;
+	for (int i=2; i<=N; i++) {
+		if ( *A >= max ) {
+			max = *A;
+			M_addr = A;
+		}
+		A++;
+	}
+	return M_addr;
 }
 
 void swap ( unsigned char *A, unsigned char *B ) {
@@ -104,6 +113,9 @@ void swap ( unsigned char *A, unsigned char *B ) {
   take 1st element in a temporary location.
   copy 2nd element to 1st element
   copy the temporary location to 2nd element */
+	unsigned char temp = *A;
+	*A=*B;
+	*B=temp;
 
 }
 
@@ -131,7 +143,7 @@ unsigned char find_median(unsigned char *A, unsigned int N) {
   if N is odd --> take the middle element as the median
   if N is even --> take the average of the 2 middle elements as the median, rounded
   to nearst integer.
-  return median.
+  return median.*/
 	sort_array(A, N);
 	unsigned char med;
 	if ( (N%2)==0 ) {
@@ -160,7 +172,7 @@ void print_array(unsigned char *A, unsigned int N) {
 
 void print_statistics(unsigned char *A, unsigned int N) {
 /* calculate statistics by using the defined functions above.
-   print results.
+   print results.*/
 	unsigned char MAX = find_maximum(A, N);
 	unsigned char MIN = find_minimum(A, N);
 	unsigned char MEAN = find_mean(A, N);
@@ -168,5 +180,5 @@ void print_statistics(unsigned char *A, unsigned int N) {
 	printf( "Maximum = %d \n", MAX);
 	printf( "Minimum = %d \n", MIN);
 	printf( "Mean    = %d \n", MEAN);
-	printf( "Median  = %d \n", MEDIAN);
+	printf( "Median  = %d \n\n", MEDIAN);
 }
