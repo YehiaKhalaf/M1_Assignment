@@ -43,18 +43,24 @@ void main() {
   print_array(test,SIZE);
   print_statistics(test, SIZE);
 
+  printf("\n The Array after sorting:\n -------------------------\n");
+  print_array(test,SIZE);
 }
 
-unsigned char find_maximum(unsigned char *A, unsigned int N) {
+Element find_maximum(unsigned char *A, unsigned int N) {
 /*take 1st element as max
   increment pointer
   count from 2nd element to Nth element and search for the max.
   return max value*/
-	unsigned char max=*A;
+	Element max;
+	max.value= *A;
+	max.index= 0;
 	A++;
 	for (int i=2; i<=N; i++) {
-		if ( *A >= max )
-			max = *A;
+		if ( *A >= max.value ) {
+			max.value = *A;
+			max.index = i-1;
+		}
 		A++;
 	}
 	return max;
@@ -93,21 +99,6 @@ unsigned char find_mean(unsigned char *A, unsigned int N) {
 	return mean;
 }
 
-unsigned char * max_addr(unsigned char *A, unsigned int N) {
-/* get address of maximum element in an array  to be used in sorting function*/
-	unsigned char *M_addr=A;
-	unsigned char max= *A;
-	A++;
-	for (int i=2; i<=N; i++) {
-		if ( *A >= max ) {
-			max = *A;
-			M_addr = A;
-		}
-		A++;
-	}
-	return M_addr;
-}
-
 void swap ( unsigned char *A, unsigned char *B ) {
 /*swap two elements in memory stack to be used in sort function
   take 1st element in a temporary location.
@@ -125,13 +116,13 @@ void sort_array(unsigned char *A, unsigned int N) {
   increment the pointer
   decrement array search area M
   repeat till Nth element */
-	unsigned char *Max;
+	Element Max;
 	unsigned char *B;
 	B = A;
 	unsigned int M = N;
 	for (int i=1; i<N; i++) {
-		Max= max_addr( B, M); 
-		swap ( Max, B);
+		Max= find_maximum( B, M ); 
+		swap ( (B+Max.index), B);
 		B++;
 		M--;
 	}
@@ -173,11 +164,11 @@ void print_array(unsigned char *A, unsigned int N) {
 void print_statistics(unsigned char *A, unsigned int N) {
 /* calculate statistics by using the defined functions above.
    print results.*/
-	unsigned char MAX = find_maximum(A, N);
+	Element MAX = find_maximum(A, N);
 	unsigned char MIN = find_minimum(A, N);
 	unsigned char MEAN = find_mean(A, N);
 	unsigned char MEDIAN = find_median(A, N);
-	printf( "Maximum = %d \n", MAX);
+	printf( "Maximum = %d \n", MAX.value);
 	printf( "Minimum = %d \n", MIN);
 	printf( "Mean    = %d \n", MEAN);
 	printf( "Median  = %d \n\n", MEDIAN);

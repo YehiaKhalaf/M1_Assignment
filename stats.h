@@ -26,6 +26,7 @@
 #ifndef __STATS_H__
 #define __STATS_H__
 
+
 /*************************************************************************
  * print_array(): Given an array of data and its length length, it prints*
  * the array to the screen.						 *
@@ -46,13 +47,18 @@ void sort_array(unsigned char *A, unsigned int N);
 
 /*************************************************************************
  * find_maximum(): Given an array of data and its length length, it finds*
- * the maximum value among its elements.				 *
+ * the maximum value and its index in the array.			 *
  * parameters: *A Pointer to Array of chars				 *
  * 		N Number of elements in the Array			 *
- * Return    : 	the maximum value.					 *
+ * Return    : 	struct of new type (Element) with value and index chars	 *
  *************************************************************************/
 
-unsigned char find_maximum(unsigned char *A, unsigned int N);
+typedef struct {
+	unsigned char index;
+	unsigned char value;
+} Element;
+
+Element find_maximum(unsigned char *A, unsigned int N);
 
 /*************************************************************************
  * find_minimum(): Given an array of data and its length length, it finds*
